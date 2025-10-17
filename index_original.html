@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Frases com Tempos Diferentes</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        #frase {
+            font-size: 3rem;
+            text-align: center;
+            max-width: 90%;
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            animation: glow 2s ease-in-out infinite alternate;
+            line-height: 1.2;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff; }
+        }
+
+        /* Add some particle effect or something, but keep simple */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(255,0,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(0,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="meuAudio" src="rock-your-body.mp3"></audio>
+    <div id="frase">Carregando...</div>
+
+    <script>
+        document.getElementById('meuAudio').play();
+        const frases = [
+            { texto: "...", duracao: 1750 },
+            { texto: "I", duracao: 350 },
+            { texto: "wanna", duracao: 400 },
+            { texto: "da-", duracao: 400 },
+            { texto: "I", duracao: 350 },
+            { texto: "wanna", duracao: 400 },
+            { texto: "dance", duracao: 400 },
+            { texto: "in", duracao: 200 },
+            { texto: "the", duracao: 200 },
+            { texto: "lights", duracao: 800 },
+            { texto: "...", duracao: 500 },
+            
+            { texto: "I", duracao: 300 },
+            { texto: "wanna", duracao: 400 },
+            { texto: "ro-", duracao: 300 },
+            { texto: "I", duracao: 300 },
+            { texto: "wanna", duracao: 400 },
+            { texto: "rock", duracao: 400 },
+            { texto: "your", duracao: 500 },    
+            { texto: "body", duracao: 1150 },
+            
+            { texto: "I", duracao: 300 },
+            { texto: "wanna", duracao: 400 },
+            { texto: "go", duracao: 300 },
+            { texto: "I", duracao: 300 },
+            { texto: "wanna", duracao: 400 },
+            { texto: "go", duracao: 300 },
+            { texto: "for", duracao: 350 },
+            { texto: "a", duracao: 300 },
+            { texto: "ride", duracao: 800 },
+            { texto: "...", duracao: 400 },
+
+            { texto: "Hop", duracao: 400 },
+            { texto: "in", duracao: 250 },
+            { texto: "the", duracao: 250 },
+            { texto: "music", duracao: 500 },
+            { texto: "and", duracao: 350 },
+            { texto: "rock", duracao: 450 },
+            { texto: "your", duracao: 500 },
+            { texto: "body", duracao: 700 },
+            { texto: "right", duracao: 400 },
+
+            { texto: "Rock", duracao: 300 },
+            { texto: "that", duracao: 200 },
+            { texto: "body", duracao: 300 },
+            { texto: "come on", duracao: 250 },
+            { texto: "come on", duracao: 150 },
+            { texto: "come on come on", duracao: 250 },
+            { texto: "come on come on", duracao: 150 },
+            { texto: "rock", duracao: 300 },
+            { texto: "that", duracao: 200 },
+            { texto: "body", duracao: 300 },
+            { texto: "rock", duracao: 300 },
+            { texto: "that", duracao: 200 },
+            { texto: "body", duracao: 500 },
+            { texto: "...", duracao: 200000 }
+        ];
+
+
+        let index = 0;
+        const elemento = document.getElementById("frase");
+
+        function mostrarFrase() {
+            const { texto, duracao } = frases[index];
+            elemento.textContent = texto;
+
+            setTimeout(() => {
+                index = (index + 1) % frases.length;
+                mostrarFrase();
+            }, duracao);
+        }
+
+        mostrarFrase(); 
+    </script>
+</body>
+
+</html>

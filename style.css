@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #000, #333);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff00ff;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff00ff; }
+    to { text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
+}
+
+#lyrics {
+    font-size: 2em;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.line {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.line.active {
+    opacity: 1;
+    transform: translateY(0);
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.line.highlight {
+    animation: highlight 0.5s ease, rainbow 2s infinite;
+}
+
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    16% { color: #ff8000; }
+    33% { color: #ffff00; }
+    50% { color: #00ff00; }
+    66% { color: #0000ff; }
+    83% { color: #8000ff; }
+    100% { color: #ff00ff; }
+}
+
+@keyframes highlight {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); color: #ffff00; }
+    100% { transform: scale(1); }
+}
