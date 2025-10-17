@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Frases com Tempos Diferentes</title>
+    <title>Rock Your Body Lyrics</title>
     <style>
         body {
             display: flex;
@@ -11,23 +11,44 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #121212;
-            font-family: Arial, sans-serif;
+            background-color: #000;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
         }
 
         #frase {
-            font-size: 2rem;
+            font-size: 3rem;
             text-align: center;
-            max-width: 80%;
-            font-family: Blippo, fantasy;
-            color: #f8f8f8;
+            max-width: 90%;
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            animation: glow 2s ease-in-out infinite alternate;
+            line-height: 1.2;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff; }
+        }
+
+        /* Add some particle effect or something, but keep simple */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(255,0,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(0,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
     </style>
 </head>
 
 <body>
-    <audio id="meuAudio" src="Vídeo-sem-título.mp3"></audio>
-    <div id="frase">Carregando...</div>
+    <audio id="meuAudio" src="rock-your-body.mp3"></audio>
+    <div id="frase">Loading...</div>
 
     <script>
         document.getElementById('meuAudio').play();
